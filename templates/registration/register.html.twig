@@ -14,7 +14,9 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password : '
         }) }}
-
+    {{ form_row(registrationForm.Nom) }}
+    {{ form_row(registrationForm.Prenom) }}
+    {{ form_row(registrationForm.Telephone) }}
         <button type="submit" >Valider</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

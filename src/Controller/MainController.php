@@ -82,6 +82,40 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/edition/{id}", name="main_edit")
+     */
+     public function edit($id,Request $request,
+                          EntityManagerInterface $entityManager,
+                          LogementRepository $logementRepository,
+                          UploadPicture $uploadPicture)
+     {
+         $annonce=$logementRepository->find($id);
+         $annonceForm=$this->createForm(LogementType::class, $annonce);
+         $annonceForm->handleRequest($request);
+         /**
+          * @var $Logement $annonce
+          */
+         if($annonceForm->isSubmitted() && $annonceForm->isValid()){
+             $file=$annonceForm->get('photo')->getData();
+             if($file){
+                 $ImageDirectory=$this->getParameter('upload_photo_logement_dir');
+                 $imageName=$annonce->getTypeLogement();
+                 //$logement->setPhoto($newFilename);
+                 $annonce->setPhoto($uploadPicture->loadpicture($file,$ImageDirectory,$imageName));
+             }
+             $annonce->setDateParution(new \DateTime());
+             $entityManager->persist($annonce);
+             $entityManager->flush();
+             $this->addFlash("Edition","Annonce éditée avec succès");
+           return $this->redirectToRoute('main_detail',['id'=>$annonce->getId()])  ;
+         }
+         return $this->render('main/edit.html.twig', [
+              'annonceForm'=>$annonceForm->createView()
+         ]);
+     }
+
+
+    /**
      * @Route("/create", name="main_create")
      */
     public function create(Request $request,

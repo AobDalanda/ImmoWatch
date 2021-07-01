@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+<br>
+    <div class="serie-details">
+        <div class="cardDetails">
+            <img src="{{ asset('images/'~ annonce.photo) }}"  >
+        </div>
+        <div class="serie-details-infos">
+            <h2>{{ annonce.typeLogement|upper }}</h2>
+            <div> {{ annonce.nbPieceHabitable }} pièces   - {{ annonce.superficie }} m²</div>
+            <div>{{ annonce.adresse }}</div>
+            {% if annonce.exterieur >0 %}
+            <div>
+                Extérieur :  {{ annonce.surface }} m²
+            </div>
+            {% endif %}
+            <div>Prix : {{ annonce.prixVenteLocation }} €</div>
+            <div>{{ annonce.dateParution|date("d-m-Y") }} à {{ annonce.dateParution|date("H:i") }}</div>
+        </div>
+        {% if app.user %}
+            <div>
+                <a class="link_button" href="{{ path('main_edit', {'id': annonce.id}) }}">Editer</a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+

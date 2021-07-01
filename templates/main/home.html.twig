@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ parent()}}
+{% endblock %}
+
+{% block body %}
+<br>
+    <div class="flex_div flex_between ">
+        {% if currentPage > 1 %}
+            <a class="link_buttonPrecedent" href="{{ path('main_home', {'page': currentPage - 1 }) }}"  >Page précédente</a>
+        {% endif %}
+        {% if currentPage < maxPage  %}
+            <div></div>
+            <a class="link_buttonsuivant" href="{{ path('main_home', {'page': currentPage + 1 }) }}">Page suivante</a>
+        {% endif %}
+    </div>
+    <center><span >Nombre d'annonces  :  {{ nbreAnnonce }} </span></center><br>
+    <section class="series-list">
+
+        {% for annonce in announces %}
+        <a href="{{ path('main_detail', {'id' : annonce.id}) }}" title="Voir détail">
+            <div class="card">
+                   <img src="{{ asset('images/'~ annonce.photo) }}" alt="{{ annonce.typeLogement }}"  >
+                <div class="container1">
+                    {{ annonce.typeLogement|upper }} <br>
+                     {{ annonce.ville }}<br>
+                    Prix:{{ annonce.prixVenteLocation }} Euros
+                </div>
+            </div>
+         </a>
+        {% endfor %}
+    </section>
+
+
+
+{% endblock %}
+
+

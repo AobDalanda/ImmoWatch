@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <h2>Depot d'annonce</h2>
+    {{ form_start(logementForm) }}
+    {{ form_widget(logementForm) }}
+    <button>Créer</button>
+    {{ form_end(logementForm) }}
+
+{% endblock %}

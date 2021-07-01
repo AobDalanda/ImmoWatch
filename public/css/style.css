@@ -162,28 +162,45 @@ img {
     font-weight: bold;
 }
 /* ------------------CSS POUR MES FORMULAIRE--------------------------*/
-#from {
 
-    text-align: center;
-    left : 398px;
-    top  : 235px;
+form {
+    width: 50%;
+    margin: 0 auto;
 }
 
-input[type=text],input[type=password], input[type=email] {
+input[type=text],input[type=password], input[type=email], input[type=tel] {
     border: 1px dotted #999;
     border-radius: 5px;
     margin: 5px;
     width: 225px;
     height: 25px;
-    -webkit-appearance: none;
     margin-left: 20px;
     margin: 2px 4px;
-
-
 }
-.button1 {
+
+
+#logement_venteLocation,#logement_prixVenteLocation,
+#logement_typeLogement,#logement_piscine,#logement_garage,#logement_surface,#logement_exterieur,#logement_typeLogement,
+#logement_superficie,#logement_nbPieceHabitable{
+    border: 1px dotted #999;
+    border-radius: 5px;
+    margin: 5px;
+    width: auto;
+    height: 25px;
+    margin-left: 20px;
+    margin: 2px 4px;
+}
+
+h2{
+    text-align: center;
+    font-size: 25px;
+}
+
+button{
+    text-align: center;
     width: 100px;
-    height: 50px;
+    height: 25px;
+    margin-top: 15px;
     background-color: #008CBA;
     border: none;
     border-radius: 3px;

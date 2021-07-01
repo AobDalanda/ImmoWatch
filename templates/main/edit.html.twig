@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+    <h2>Edition d'annonce</h2>
+    {{ form_start(annonceForm) }}
+    {{ form_widget(annonceForm) }}
+    {% if app.user %}
+    <button>Valider</button>
+    {% endif %}
+    {{ form_end(annonceForm) }}
+
+{% endblock %}
